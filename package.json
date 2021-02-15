@@ -1,21 +1,46 @@
 {
-  "name": "rtc",
-  "version": "0.1.0",
+  "name": "rtcplatform",
+  "version": "1.0.0",
+  "description": "Real Time Communication App",
+  "author": "Michal Platko",
+  "license": "ISC",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "electron": "^11.2.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.16",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
+    "socket.io": "^3.1.1",
     "web-vitals": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "eslint": "^7.20.0",
+    "nodemon": "^2.0.7"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "concurrently \"npm start\" \"electron clientWindow.js\"",
+    "server-dev" : "nodemon ./server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichalPlatko/RTCPlatform.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MichalPlatko/RTCPlatform/issues"
   },
   "eslintConfig": {
     "extends": [

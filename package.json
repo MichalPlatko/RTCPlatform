@@ -8,6 +8,7 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@material-ui/system": "^4.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
@@ -33,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "client": "concurrently \"npm start\" \"electron clientWindow.js\"",
-    "server-dev" : "nodemon ./server/server"
+    "server-dev": "nodemon ./server/server"
   },
   "repository": {
     "type": "git",

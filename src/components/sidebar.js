@@ -14,7 +14,7 @@ function SideBar() {
         <div className="sidebar"> 
         
         <div className="sidebar_top">
-        <h3>ChannelName</h3>
+        <h3>Server Name</h3>
         <ExpandMoreIcon/>
         </div>
         

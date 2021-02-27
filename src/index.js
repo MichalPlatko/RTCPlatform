@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./styles/app.css"
 import {CssBaseline} from "@material-ui/core";
 
-import CustomTopPanel from "./components/CustomTopPanel";
-import ProfilePanel from "./components/Content";
+import Sidebar from "./components/sidebar";
 
 
 class App extends React.Component{
@@ -11,8 +11,10 @@ class App extends React.Component{
     return(
       <>
       <CssBaseline />
-      <CustomTopPanel/>
-      <ProfilePanel/>
+      <div className="App">
+      <Sidebar/>
+      </div>
+
       </>
     )
   }
@@ -22,3 +24,11 @@ class App extends React.Component{
 
 ReactDOM.render(<App/>,document.getElementById('root'));
 
+/**
+ * DISCORD THEME COLORS
+ * #2f3136 left panel
+ * #2f3136 left sidebar
+ * #36393f message box
+ * #2f3136 right sidebar
+ * #202225 top bar
+ */

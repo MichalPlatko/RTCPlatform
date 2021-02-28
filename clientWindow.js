@@ -1,6 +1,6 @@
 const {
   app,
-  BrowserWindow
+  BrowserWindow,
 } = require('electron');
 
 
@@ -15,9 +15,9 @@ function createWindow() {
       enableRemoteModule:true
     },
     backgroundColor:"#282828",
-    frame:false,
   })
-  
+
+  win.setMenuBarVisibility(false);
   win.loadURL(`http://localhost:5000/`);
   win.webContents.openDevTools();
   win.focus();

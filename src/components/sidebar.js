@@ -2,20 +2,23 @@ import React from 'react'
 import "../styles/sidebar.css";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AddIcon from '@material-ui/icons/AddSharp';
-import SidebarChannel from './sidebarChannel';
 import SignalCellularIcon from '@material-ui/icons/SignalCellularAltSharp';
 import CallEndIcon from '@material-ui/icons/CallEndSharp';
 import InfoIcon from '@material-ui/icons/InfoOutlined';
-import SidebarProfile from './sidebarProfile';
+import {Avatar} from "@material-ui/core";
+import MicIcon from '@material-ui/icons/Mic';
+import MicOffIcon from '@material-ui/icons/MicOff';
+import HeadsetIcon from '@material-ui/icons/Headset';
+import SettingsIcon from '@material-ui/icons/Settings';
 
-
-function SideBar() {
+class SideBar extends React.Component{
+    render(){
     return (
         <div className="sidebar"> 
         
         <div className="sidebar_top">
         <h3>Server Name</h3>
-        <ExpandMoreIcon/>
+        <ExpandMoreIcon />
         </div>
         
         <div className="sidebar_channels">
@@ -53,6 +56,50 @@ function SideBar() {
 
         </div>
     )
+    }
 }
 
-export default SideBar
+
+class SidebarProfile extends React.Component {
+    constructor(props){
+    super(props);
+    this.src=this.props.src;
+    this.user=this.props.user;
+    }
+    render(){
+    return (
+        <div className="sidebar_profile">
+        <Avatar className="sidebar_profileAvatar">M</Avatar>
+        <div className="sidebar_profileInfo">
+        <h3>UserName</h3>
+        <p>#TAG</p>
+        </div>
+        <div className="sidebar_profileIcons">
+        <MicIcon/>
+        <HeadsetIcon/>
+        <SettingsIcon/>
+        </div>
+        </div>
+    )
+    }
+}
+
+class SidebarChannel extends React.Component{
+    constructor(props){
+        super(props);
+        this.id=props.id;
+        this.name=props.name;
+    }
+    render(){
+    return (
+        <div className="sidebarChannel">
+        <h4>
+        <span className="sidebarChannelHashIcon">#</span>
+        Channel name
+        </h4>
+        </div>
+    )
+    }
+}
+
+export default SideBar;

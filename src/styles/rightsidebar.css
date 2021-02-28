@@ -1,0 +1,30 @@
+.memberList {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex: 0.15;
+  min-width: 220px;
+  max-width: 220px;
+  background-color: #2f3136;
+  color: white;
+}
+
+.memberCategory {
+  padding: 10px;
+  padding-left: 20px;
+}
+
+.membersSortedByCategory {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.memberName {
+  padding-left: 10px;
+}
+
+.memberStatus {
+color:white;
+  font-size: small;
+}

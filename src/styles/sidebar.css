@@ -20,6 +20,18 @@
 
 .sidebar_channels {
   flex: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.sidebar_channels::-webkit-scrollbar {
+  background-color: #2f3136;
+  width: 5px;
+}
+
+.sidebar_channels::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 15px;
 }
 
 .sidebar_addChannel {
@@ -117,7 +129,7 @@
 }
 
 .sidebar_profileInfo>p {
-  font-size: small;
+  font-size: smaller;
 }
 
 .sidebar_profileIcons>.MuiSvgIcon-root {

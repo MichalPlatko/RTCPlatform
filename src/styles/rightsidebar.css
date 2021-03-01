@@ -6,25 +6,48 @@
   min-width: 220px;
   max-width: 220px;
   background-color: #2f3136;
-  color: white;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.memberList::-webkit-scrollbar {
+  background-color: #2f3136;
+  width: 5px;
+}
+
+.memberList::-webkit-scrollbar-thumb {
+  background-color: #202225;
+  border-radius: 15px;
+}
+
+.memberAvatar {
+  display: flex;
+  padding: 5px
+}
+
+.memberInfo {
+  padding-left: 10px;
+}
+
+.memberInfo>p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  min-width: 130px;
+  max-width: 130px;
 }
 
 .memberCategory {
-  padding: 10px;
-  padding-left: 20px;
+  padding-left: 15px;
+}
+
+.memberCount {
+  padding-left: 10px;
 }
 
 .membersSortedByCategory {
   padding: 5px;
   display: flex;
-  align-items: center;
-}
+  flex-direction: column;
 
-.memberName {
-  padding-left: 10px;
-}
-
-.memberStatus {
-color:white;
-  font-size: small;
 }

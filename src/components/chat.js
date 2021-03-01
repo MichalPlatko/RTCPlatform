@@ -49,6 +49,18 @@ class Chat extends React.Component {
         <ChatMessage/>
         <ChatMessage/>
         <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
+        <ChatMessage/>
         </div>
         
         <div className="chat_input">

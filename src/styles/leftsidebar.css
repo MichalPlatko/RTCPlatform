@@ -1,18 +1,22 @@
-.leftsidebar{
-    display:flex;
-    flex:0.05;
-    flex-direction: column;
-    align-items: center;
-    background-color:#202225;
-    color:white;
-    padding:2px;
-    max-width: 80px;
-    min-width: 80px;
+.leftsidebar {
+  display: flex;
+  flex: 0.05;
+  flex-direction: column;
+  align-items: center;
+  background-color: #202225;
+  color: white;
+  padding: 2px;
+  max-width: 80px;
+  min-width: 80px;
+
 }
-.serverAvatar{
-    display:flex;
-    padding:7px;
+
+
+.serverAvatar {
+  display: flex;
+  padding: 7px;
 }
-.serverAvatar:hover{
-    cursor: pointer;
+
+.serverAvatar:hover {
+  cursor: pointer;
 }

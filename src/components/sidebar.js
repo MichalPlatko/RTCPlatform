@@ -18,7 +18,7 @@ class SideBar extends React.Component{
         
         <div className="sidebar_top">
         <h3>Server Name</h3>
-        <ExpandMoreIcon />
+        <ExpandMoreIcon className="sidebar_expand" />
         </div>
         
         <div className="sidebar_channels">

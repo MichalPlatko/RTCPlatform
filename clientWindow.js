@@ -17,6 +17,8 @@ function createWindow() {
     backgroundColor:"#282828",
   })
 
+  win.setIcon("./public/skills.png");
+  win.setTitle("Real Time Communication Platform");
   win.setMenuBarVisibility(false);
   win.loadURL(`http://localhost:5000/`);
   win.webContents.openDevTools();

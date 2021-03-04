@@ -87,7 +87,6 @@
   padding: 5px;
   border-top: 1px solid gray;
 }
-
 .sidebar_voiceInfo {
   flex: 1;
   padding: 10px;
@@ -126,8 +125,14 @@
 .sidebar_profileInfo {
   flex: 1;
   padding: 10px;
+  overflow: hidden;
 }
-
+.sidebar_profileInfo > h3 {
+  color:white;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .sidebar_profileInfo>p {
   font-size: smaller;
 }

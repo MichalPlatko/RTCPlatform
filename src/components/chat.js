@@ -13,13 +13,26 @@ import AddCircleIcon from '@material-ui/icons/AddCircleSharp';
 class Chat extends React.Component {
     constructor(props){
         super(props);
-        this.state={off:false};
+        this.state={off:false,chatInput:""};
+        this.toggleNotifications=this.toggleNotifications.bind(this);
+        this.handleInputChange=this.handleInputChange.bind(this);
+        this.handleInput=this.handleInput.bind(this);
     }
-    toggleNotifications=()=>{
+    toggleNotifications(){
     if(this.state.off)this.setState({off:false});
     else this.setState({off:true});
     }
+    handleInputChange(e){
+    this.setState({chatInput:e.target.value});
+    }
+    handleInput(e){
+    //spacebar
+    if(e.code==="Enter"){ e.preventDefault(); if(this.state.chatInput.length>0)  e.target.value="";this.setState({chatInput:""});}
+    }
+    //TODO:input hanle database
+    
     render(){
+
         return (
         <div className="chat">
         <div className="chat_header">
@@ -49,23 +62,13 @@ class Chat extends React.Component {
         <ChatMessage/>
         <ChatMessage/>
         <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
-        <ChatMessage/>
+       
         </div>
         
         <div className="chat_input">
         <AddCircleIcon/>
-        <TextField fullWidth  multiline={true} rowsMax={2} variant="filled" label="Message #TextChannel" InputLabelProps={{style:{color:"gray"}}} inputProps={{style:{color:"white"}}}/>
+        <TextField onKeyPress={this.handleInput} onChange={this.handleInputChange} fullWidth  multiline={true} rowsMax={2} variant="filled" label="Message #TextChannel" InputLabelProps={{style:{color:"gray"}}} inputProps={{style:{color:"white"}}}/>
+
         <GifIcon/>
         <EmojiEmotionsIcon/>        
         </div>

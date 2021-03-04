@@ -9,6 +9,7 @@
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/system": "^4.11.3",
+    "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
@@ -16,16 +17,17 @@
     "dotenv": "^8.2.0",
     "electron": "^11.2.3",
     "express": "^4.17.1",
+    "firebase": "^8.2.9",
     "mongoose": "^5.11.16",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-scripts": "4.0.2",
-    "socket.io": "^3.1.1",
-    "web-vitals": "^1.1.0"
+    "react-redux": "^7.2.2",
+    "react-scripts": "4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "eslint": "^7.20.0",
+    "eslint-plugin-react": "^7.22.0",
     "nodemon": "^2.0.7"
   },
   "scripts": {

@@ -97,3 +97,5 @@ class Member extends React.Component{
     }
 }
 
+//TODO: 2 Categories Online,Offline,display users that are currently 
+//online when they sign in and when they sign off or close the app show them as offline

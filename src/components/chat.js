@@ -6,6 +6,8 @@ import HelpIcon from '@material-ui/icons/HelpSharp';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import GifIcon from '@material-ui/icons/Gif';
 import AddCircleIcon from '@material-ui/icons/AddCircleSharp';
+import DeleteIcon from '@material-ui/icons/DeleteSharp';
+
 import {useSelector} from "react-redux";
 import {selectChannelId,selectChannelName} from "../appSlice";
 import { selectUser } from '../userSlice';
@@ -77,13 +79,16 @@ export default function Chat(){
         
         </div>
         </div>
-        
         <div className="chat_messages" id="chat_messages">
         {messages.map((message,i)=>(
         message.message.startsWith(`@${user.displayName}`) ?
-        <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message.replace(`@${message.user.displayName}`,"")}/>
+        <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo}
+        timestamp={message.timestamp} currentUser={user} user={message.user} message={message.message}/>
         : <ChatMessage key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
-        ))}
+        ))
+        
+        }
+        
         {scrollToBottom("chat_messages")}
         </div>
         
@@ -122,7 +127,7 @@ function ChatMessage({timestamp,user,photo,message}){
     )
 }
 
-function ChatMessageHighlighted({highlightName,timestamp,user,photo,message}){
+function ChatMessageHighlighted({highlightName,timestamp,currentUser,user,photo,message}){
     return (
         <div className="chat_message_highlighted">
         <Avatar src={photo}/>
@@ -130,8 +135,11 @@ function ChatMessageHighlighted({highlightName,timestamp,user,photo,message}){
         <h4>{user.displayName}
         <span className="chat_timestamp">{new Date(timestamp?.toDate()).toUTCString()}</span>
         </h4>
-        <p><span>{highlightName}</span>{message}</p>
+        <p><span>{highlightName}</span>{message.replace(`@${currentUser.displayName}`,"")}</p>
         </div>
         </div>
     )
 }
+
+//TODO: ADD CHAT MESSAGE ACTIONS LIKE EDIT,DELETE
+//        <div className="chat_actions"> <DeleteIcon/> </div>

@@ -74,7 +74,8 @@
   border-left: 2px solid rgba(245, 171, 53, 1);
 }
 .chat_message_highlighted >.message_info>p>span{
-  color:rgba(25, 181, 254, 1);
+background-color:rgba(25, 181, 254, .2);
+color:rgba(25, 181, 254, 1);
 }
 
 .message_info {

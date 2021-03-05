@@ -67,7 +67,7 @@ function App(){
 
 //TODO:ADDED REDUX PROVIDER TO HOLD ONTO STATE,
 //https://www.youtube.com/watch?v=zc1loX80TX8&list=WL&ab_channel=CleverProgrammer
-//2:31:10 -> setup chat to display message under appropriate selected channel loaded from db
+//2:40:34 -> setup chat to display message under appropriate selected channel loaded from db
 
 ReactDOM.render(<WrappedAppInRedux/>,document.getElementById('root'));
 

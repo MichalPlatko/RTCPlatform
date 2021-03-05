@@ -5,7 +5,7 @@ import {auth,provider} from "../firebaseconfig";
 
 class LoginPage extends React.Component{
     signIn=()=>{
-    auth.signInWithPopup(provider)
+    auth.signInWithRedirect(provider)
     .catch(error=>alert(error.message));
     }
     render(){

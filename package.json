@@ -35,8 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "client": "concurrently \"npm start\" \"electron clientWindow.js\"",
-    "server-dev": "nodemon ./server/server"
+    "client": "concurrently \"npm start\" \"electron clientWindow.js\""
   },
   "repository": {
     "type": "git",

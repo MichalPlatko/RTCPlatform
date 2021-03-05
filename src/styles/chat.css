@@ -66,8 +66,11 @@
   padding: 20px;
 }
 
+
 .message_info {
   padding-left: 20px;
+  word-wrap: break-word;
+  max-width: 700px;
 }
 
 .chat_timestamp {

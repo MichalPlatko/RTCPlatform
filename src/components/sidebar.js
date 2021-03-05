@@ -15,6 +15,7 @@ import {useSelector,useDispatch} from "react-redux";
 import {selectUser} from "../userSlice";
 import db from '../firebaseconfig';
 import {setChannelInfo} from "../appSlice";
+import  DOMPurify from 'dompurify';
 
 function SideBar(){
     const user = useSelector(selectUser);
@@ -31,10 +32,10 @@ function SideBar(){
     },[]);
 
     const addChannel=()=>{
-    const channelName=prompt("Add Channel Name");
-    if(channelName){
+    const channelName=prompt("Add Channel Name (20Characters maximum)");
+    if(channelName  && channelName.length<20){
         db.collection("channels").add({
-            name:channelName
+            name:DOMPurify.sanitize(channelName),
         });
     }
     }
@@ -56,7 +57,9 @@ function SideBar(){
         </div>
 
         <div className="sidebar_channelsList">
-        {channels.map(c=>(<SidebarChannel key={c.id} id={c.id} name={c.channel.name}/>))}
+        {channels.map(c=>(<SidebarChannel key={c.id} id={c.id} name={c.channel.name}/>))
+        }
+       
         </div>
         </div>
 
@@ -98,7 +101,6 @@ function SidebarProfile({photo,userName,tag}){
 
 function SidebarChannel({id,name}){
     const dispatch=useDispatch();
-
     return (
         <div className="sidebarChannel" onClick={()=>{
         dispatch(setChannelInfo({

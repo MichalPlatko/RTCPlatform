@@ -3,8 +3,6 @@ import "../styles/chat.css";
 import {TextField,Tooltip,Avatar} from "@material-ui/core";
 import PeopleIcon from '@material-ui/icons/PeopleSharp';
 import HelpIcon from '@material-ui/icons/HelpSharp';
-// import NotificationsIcon from '@material-ui/icons/NotificationsSharp';
-// import NotificationsOffIcon from '@material-ui/icons/NotificationsOffSharp';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import GifIcon from '@material-ui/icons/Gif';
 import AddCircleIcon from '@material-ui/icons/AddCircleSharp';
@@ -13,16 +11,9 @@ import {selectChannelId,selectChannelName} from "../appSlice";
 import { selectUser } from '../userSlice';
 import db from '../firebaseconfig';
 import firebase from "firebase";
+import DOMPurify from "dompurify";
 
-//TODO: REDO CHAT CONTAINER AS FUNCTIONAL COMPONENT,DONT USE CLASS HERE
 export default function Chat(){
-    // constructor(props){
-    //     super(props);
-    //     // this.state={off:false,chatInput:""};
-    //     // this.toggleNotifications=this.toggleNotifications.bind(this);
-    //     // this.handleInputChange=this.handleInputChange.bind(this);
-    //     // this.handleInput=this.handleInput.bind(this);
-    // }
         const [chatInput,setChange] = useState("");
         const channelId=useSelector(selectChannelId);
         const channelName=useSelector(selectChannelName);
@@ -38,7 +29,7 @@ export default function Chat(){
         if(chatInput.length>0) {
         db.collection("channels").doc(channelId).collection("messages").add({
             timestamp:firebase.firestore.FieldValue.serverTimestamp(),
-            message:e.target.value,
+            message:DOMPurify.sanitize(e.target.value),
             user:user,
         });
         e.target.value=""; setChange("");
@@ -55,6 +46,13 @@ export default function Chat(){
             .onSnapshot((snapshot) => setMessages(snapshot.docs.map((doc)=>doc.data())))
         }   
         }, [channelId]);
+
+        const scrollToBottom=id=>{
+        let chat=document.getElementById(id);
+        if(chat){
+        chat.scrollTop=chat.scrollHeight-chat.clientHeight;
+        }
+        }
 
         return (
         <div className="chat">
@@ -80,15 +78,25 @@ export default function Chat(){
         </div>
         </div>
         
-        <div className="chat_messages">
+        <div className="chat_messages" id="chat_messages">
         {messages.map((message,i)=>(
         <ChatMessage key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
         ))}
+        {scrollToBottom("chat_messages")}
         </div>
         
         <div className="chat_input">
         <AddCircleIcon/>
-        <TextField onKeyPress={handleInput} disabled={!channelId} onChange={handleInputChange} fullWidth  multiline={true} rowsMax={2} variant="filled" label={`Message # ${channelName}`} InputLabelProps={{style:{color:"gray"}}} inputProps={{style:{color:"white"}}}/>
+        
+        <TextField onKeyPress={handleInput}
+        disabled={!channelId}
+        onChange={handleInputChange}
+        fullWidth multiline={true}
+        rowsMax={2} variant="filled"
+        label={`Message # ${channelName}`}
+        InputLabelProps={{style:{color:"gray"}}}
+        inputProps={{style:{color:"white"},minLength:1,maxLength:140}}/>
+        
         <GifIcon/>
         <EmojiEmotionsIcon/>        
         </div>

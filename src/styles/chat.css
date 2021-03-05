@@ -65,7 +65,17 @@
   color: white;
   padding: 20px;
 }
-
+.chat_message_highlighted {
+  display: flex;
+  align-items: center;
+  color: white;
+  background-color: rgba(245, 171, 53, .1);
+  padding: 20px;
+  border-left: 2px solid rgba(245, 171, 53, 1);
+}
+.chat_message_highlighted >.message_info>p>span{
+  color:rgba(25, 181, 254, 1);
+}
 
 .message_info {
   padding-left: 20px;

@@ -80,7 +80,9 @@ export default function Chat(){
         
         <div className="chat_messages" id="chat_messages">
         {messages.map((message,i)=>(
-        <ChatMessage key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
+        message.message.startsWith(`@${user.displayName}`) ?
+        <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message.replace(`@${message.user.displayName}`,"")}/>
+        : <ChatMessage key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
         ))}
         {scrollToBottom("chat_messages")}
         </div>
@@ -120,3 +122,16 @@ function ChatMessage({timestamp,user,photo,message}){
     )
 }
 
+function ChatMessageHighlighted({highlightName,timestamp,user,photo,message}){
+    return (
+        <div className="chat_message_highlighted">
+        <Avatar src={photo}/>
+        <div className="message_info">
+        <h4>{user.displayName}
+        <span className="chat_timestamp">{new Date(timestamp?.toDate()).toUTCString()}</span>
+        </h4>
+        <p><span>{highlightName}</span>{message}</p>
+        </div>
+        </div>
+    )
+}

@@ -12,7 +12,8 @@ function createWindow() {
     minHeight:720,
     webPreferences: {
       nodeIntegration: true,
-      enableRemoteModule:true
+      enableRemoteModule:true,
+      nativeWindowOpen: true, // this allows you to use popups when doing authentication using firebase in an electron app
     },
     backgroundColor:"#282828",
   })

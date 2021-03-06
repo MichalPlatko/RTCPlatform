@@ -3,28 +3,9 @@ import "../styles/rightsidebar.css";
 import {Avatar} from "@material-ui/core";
 import DashIcon from '@material-ui/icons/Minimize';
 
-const members=[{user:{role:"Owner",name:"MichalZard",status:"Developing project"}},
-{user:{role:"Vips",name:"test",status:"Flexing money"}},
-{user:{role:"Vips",name:"Wiciregord",status:"Frost DK ilvl 220"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test1",status:"Im so poor"}},
-{user:{role:"Owner",name:"test2",status:"overflow test of text,looks like it works"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}},
-{user:{role:"Plebs",name:"test2",status:"Im so poor"}}
+const members=[{user:{role:"Online",name:"testTest",status:"Developing project"}},
+{user:{role:"Online",name:"test",status:"Flexing money"}},
+{user:{role:"Offline",name:"test2",status:"Im so poor"}}
 ];
 
 class MemberList extends React.Component {
@@ -37,9 +18,8 @@ class MemberList extends React.Component {
     render(){
     return (
         <div className="memberList">
-        <MemberCategory role="Owner" color="red" />
-        <MemberCategory role="Vips" color="pink" />
-        <MemberCategory role="Plebs" color="lightgray"/>
+        <MemberCategory role="Online" color="white" />
+        <MemberCategory role="Offline" color="gray" />
         </div>
     )
     }

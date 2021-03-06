@@ -37,7 +37,7 @@ export default function Chat(){
         e.target.value=""; setChange("");
         }
         }
-        }
+        }  
 
         useEffect(() => {
         if(channelId){
@@ -84,7 +84,7 @@ export default function Chat(){
         message.message.startsWith(`@${user.displayName}`) ?
         <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo}
         timestamp={message.timestamp} currentUser={user} user={message.user} message={message.message}/>
-        : <ChatMessage key={i} id={message.user.uid} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
+        : <ChatMessage key={i} id={message.user.uid} currentUser={user} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
         ))
         
         }
@@ -113,7 +113,7 @@ export default function Chat(){
 
 
 //TODO:FIX CHAT MESSAGE AND MAP OVER TO DISPLAY MESSAGES FROM SERVER
-function ChatMessage({timestamp,user,photo,message}){
+function ChatMessage({timestamp,currentUser,user,photo,message}){
     return (
         <div className="chat_message">
         <Avatar src={photo}/>
@@ -123,6 +123,7 @@ function ChatMessage({timestamp,user,photo,message}){
         </h4>
         <p>{message}</p>
         </div>
+        {user.displayName===currentUser.displayName ? <div> <DeleteIcon /> </div> : null}
         </div>
     )
 }
@@ -137,9 +138,10 @@ function ChatMessageHighlighted({highlightName,timestamp,currentUser,user,photo,
         </h4>
         <p><span>{highlightName}</span>{message.replace(`@${currentUser.displayName}`,"")}</p>
         </div>
+        {user.displayName===currentUser.displayName ? <div> <DeleteIcon /> </div> : null}
         </div>
     )
 }
 
 //TODO: ADD CHAT MESSAGE ACTIONS LIKE EDIT,DELETE
-//        <div className="chat_actions"> <DeleteIcon/> </div>
+// 

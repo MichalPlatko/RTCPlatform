@@ -8,74 +8,46 @@ const members=[{user:{role:"Online",name:"testTest",status:"Developing project"}
 {user:{role:"Offline",name:"test2",status:"Im so poor"}}
 ];
 
-class MemberList extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            categories:[],
-        }
-    }
-    render(){
+export default function MemberList(){
     return (
         <div className="memberList">
         <MemberCategory role="Online" color="white" />
         <MemberCategory role="Offline" color="gray" />
         </div>
     )
-    }
 }
-export default MemberList;
 
-//TODO: DISPLAY CORRECT AMMOUNT OF MEMBERS
-class MemberCategory extends React.Component{
-    constructor(props){
-    super(props);
-    this.role=props.role;
-    this.color=props.color;
-    this.state={
-        members:[],
-    }
-    }
-    componentDidMount(){
-    this.setState({members:members});
-    }
-    render(){
-        const usersFiltered=this.state.members.filter(member=>member.user.role===this.role);       
-        return(
-            <div className="memberCategory" style={{color:"lightgray"}}>
-            <div className="memberCount">{this.role} <DashIcon/> {usersFiltered.length}</div>
-            <div className="membersSortedByCategory">
-            {
-            usersFiltered.map((m,index)=>{
-            return <Member color={this.color} key={index} name={m.user.name} status={m.user.status}/>
-            })
-            }       
-            </div>
-            </div>
+function MemberCategory({role,color}){
+    //const usersFiltered=this.state.members.filter(member=>member.user.role===this.role);       
+    const userFiltered=members.filter(member=>member.user.role===role);
+    console.log(userFiltered);
+    return(
+        <div className="memberCategory" style={{color:color}}>
+        <div className="memberCount">{role} <DashIcon/> {userFiltered.length}</div>
+        <div className="membersSortedByCategory">
+        {/*usersFiltered.map((m,index)=>{*/}
+        {
+        userFiltered.map((m,index)=>{
+        return <Member color={color} key={index} name={m.user.name} status={m.user.status}/>
+        })
+        }      
+        </div>
+        </div>
         )
-    }
 }
 
-class Member extends React.Component{
-    constructor(props){
-        super(props);
-        this.color=props.color;
-        this.name=props.name;
-        this.status=props.status;
-    }
-    render(){
-        return(
+function Member({color,name,status}){   
+    return(
         <div className="memberAvatar">
         <Avatar/>
         <div className="memberInfo">
-        <h4 style={{color:this.color}}>{this.name}</h4>
-        <p>{this.status}</p>
+        <h4 style={{color:color}}>{name}</h4>
+        <p>{status}</p>
         </div>
-        </div>
-        
-        )
-    }
+        </div> 
+    )
 }
 
 //TODO: 2 Categories Online,Offline,display users that are currently 
 //online when they sign in and when they sign off or close the app show them as offline
+//https://firebase.google.com/docs/firestore/solutions/presence

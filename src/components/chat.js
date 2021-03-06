@@ -81,12 +81,11 @@ export default function Chat(){
         </div>
         <div className="chat_messages" id="chat_messages">
         {messages.map((message,i)=>(
-        message.message.startsWith(`@${user.displayName}`) ?
-        <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo}
-        timestamp={message.timestamp} currentUser={user} user={message.user} message={message.message}/>
-        : <ChatMessage key={i} id={message.user.uid} currentUser={user} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
-        ))
-        
+            message.message.startsWith(`@${user.displayName}`) ?
+            <ChatMessageHighlighted highlightName={`@${user.displayName}`} key={i} id={message.user.uid} photo={message.user.photo}
+            timestamp={message.timestamp} currentUser={user} user={message.user} message={message.message}/>
+            : <ChatMessage key={i} id={message.user.uid} currentUser={user} photo={message.user.photo} timestamp={message.timestamp} user={message.user} message={message.message}/>
+            ))        
         }
         
         {scrollToBottom("chat_messages")}
@@ -129,6 +128,11 @@ function ChatMessage({timestamp,currentUser,user,photo,message}){
 }
 
 function ChatMessageHighlighted({highlightName,timestamp,currentUser,user,photo,message}){
+    const channelId=useSelector(selectChannelId);
+
+    const deleteMessage=()=>{
+        // SEND REQUEST TO DELETE FIRESTORE COLLECTION OF MESSAGES
+    }
     return (
         <div className="chat_message_highlighted">
         <Avatar src={photo}/>
@@ -138,7 +142,7 @@ function ChatMessageHighlighted({highlightName,timestamp,currentUser,user,photo,
         </h4>
         <p><span>{highlightName}</span>{message.replace(`@${currentUser.displayName}`,"")}</p>
         </div>
-        {user.displayName===currentUser.displayName ? <div> <DeleteIcon /> </div> : null}
+        {user.displayName===currentUser.displayName ? <div> <DeleteIcon onClick={deleteMessage} /> </div> : null}
         </div>
     )
 }

@@ -1,2 +1,2 @@
 # RTCPlatform
-Fullstack application using MERN stack and lot more
+Fullstack application using react/firebase
